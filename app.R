@@ -54,8 +54,9 @@ server <- function(input, output) {
              Type == input$typeInput,
              Country == input$countryInput
              )
-    ggplot(filtered, aes(Alcohol_Content, color = Country)) + 
-      geom_histogram(bins = 100) +
+    ggplot(filtered, aes(x=Price, color = Type)) + 
+      geom_histogram() +
+      geom_point(aes(y=Alcohol_Content)) + 
       theme_test()
   })
   output$resnum <- renderText("100 results were found.")
